@@ -9,7 +9,7 @@ export function Footer() {
             The source code for this website is available on{" "}
             <Link
               className="px-1 underline underline-offset-2"
-              href="https://github.com/nisabmohd/Aria-Docs"
+              href="https://github.com/"
             >
               GitHub
             </Link>
