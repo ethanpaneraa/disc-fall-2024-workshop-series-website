@@ -86,13 +86,13 @@ export const ROUTES: EachRoute[] = [
       // },
     ],
   },
-  {
-    title: "Assignments",
-    href: "/assignments",
-    noLink: true,
-    heading: "Course Content",
-    items: [{ title: "Assignment 1", href: "/assignment-1" }],
-  },
+  // {
+  //   title: "Assignments",
+  //   href: "/assignments",
+  //   noLink: true,
+  //   heading: "Course Content",
+  //   items: [{ title: "Assignment 1", href: "/assignment-1" }],
+  // },
   {
     title: "Workshops",
     href: "",
