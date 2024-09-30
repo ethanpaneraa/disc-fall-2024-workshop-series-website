@@ -4,20 +4,23 @@ import { ROUTES } from "@/lib/routes-config";
 import SubLink from "./sublink";
 import { usePathname } from "next/navigation";
 
-export default function DocsMenu({ isSheet = false }) {
+const VALID_PATHS = ["/content", "/workshops"];
+
+export default function Menu({ isSheet = false }) {
   const pathname = usePathname();
-  if (!pathname.startsWith("/course")) return null;
+  const basePath = VALID_PATHS.find((path) => pathname.startsWith(path));
+  if (!basePath) return null;
 
   return (
     <div className="flex flex-col gap-3.5 mt-5 pr-2 pb-6">
       {ROUTES.map((item, index) => {
         const modifiedItems = {
           ...item,
-          href: `/course${item.href}`,
+          href: `${basePath}${item.href}`,
           level: 0,
           isSheet,
         };
-        if (item.heading === "Course Content") {
+        if (item.basePath === basePath) {
           return <SubLink key={index} {...modifiedItems} />;
         }
       })}

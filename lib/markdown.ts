@@ -16,6 +16,7 @@ import Note from "@/components/markdown/note";
 import { Stepper, StepperItem } from "@/components/markdown/stepper";
 import Image from "@/components/markdown/image";
 import Link from "@/components/markdown/link";
+import { BasePath } from "@/components/global_constants";
 
 // add custom components
 const components = {
@@ -60,18 +61,8 @@ type BaseMdxFrontmatter = {
   description: string;
 };
 
-export async function getDocsForSlug(slug: string) {
-  try {
-    const contentPath = getDocsContentPath(slug);
-    const rawMdx = await fs.readFile(contentPath, "utf-8");
-    return await parseMdx<BaseMdxFrontmatter>(rawMdx);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-export async function getDocsTocs(slug: string) {
-  const contentPath = getDocsContentPath(slug);
+export async function getTocHeadings(slug: string) {
+  const contentPath = getContentPath(slug);
   const rawMdx = await fs.readFile(contentPath, "utf-8");
   // captures between ## - #### can modify accordingly
   const headingsRegex = /^(#{2,4})\s(.+)$/gm;
@@ -90,50 +81,25 @@ export async function getDocsTocs(slug: string) {
   return extractedHeadings;
 }
 
-export async function getWorkshopTocs(slug: string) {
-  const contentPath = getWorkshopsContentPath(slug);
-  const rawMdx = await fs.readFile(contentPath, "utf-8");
-
-  const headingsRegex = /^(#{2,4})\s(.+)$/gm;
-  let match;
-  const extractedHeadings = [];
-  while ((match = headingsRegex.exec(rawMdx)) !== null) {
-    const headingLevel = match[1].length;
-    const headingText = match[2].trim();
-    const slug = sluggify(headingText);
-    extractedHeadings.push({
-      level: headingLevel,
-      text: headingText,
-      href: `#${slug}`,
-    });
-  }
-
-  return extractedHeadings;
-}
-
 export async function getTocs(
   path: string,
-  type: "docs" | "workshops"
+  type: BasePath,
 ): Promise<{ level: number; text: string; href: string }[]> {
   try {
-    if (type === "docs") {
-      return (await getDocsTocs(path)) || [];
-    } else {
-      return (await getWorkshopTocs(path)) || [];
-    }
+    return (await getTocHeadings(`${type}/${path}`)) || [];
   } catch (error) {
     console.error(`Error fetching TOC for ${type}:`, error);
     return [];
   }
 }
 
-export async function getWorkshopsForSlug(
+export async function getContentsForSlug(
   slug: string
 ): Promise<
   { frontmatter: BaseMdxFrontmatter; content: React.ReactElement } | undefined
 > {
   try {
-    const contentPath = getWorkshopsContentPath(slug);
+    const contentPath = getContentPath(slug);
     const rawMdx = await fs.readFile(contentPath, "utf-8");
     return await parseMdx<BaseMdxFrontmatter>(rawMdx);
   } catch (err) {
@@ -143,7 +109,16 @@ export async function getWorkshopsForSlug(
 }
 
 export function getPreviousNext(path: string) {
+  // todo: this needs to be fixed in the future
+  // either every page takes you to the next page, in which case
+  // routes needs to be updated to contain all the routes,
+  // or prev/next is only used within a single page's subpages
   const index = page_routes.findIndex(({ href }) => href == `/${path}`);
+
+  if (index === -1) {
+    return { prev: null, next: null };
+  }
+
   return {
     prev: page_routes[index - 1],
     next: page_routes[index + 1],
@@ -155,12 +130,8 @@ function sluggify(text: string) {
   return slug.replace(/[^a-z0-9-]/g, "");
 }
 
-function getDocsContentPath(slug: string) {
-  return path.join(process.cwd(), "/contents/course/", `${slug}/index.mdx`);
-}
-
-function getWorkshopsContentPath(slug: string) {
-  return path.join(process.cwd(), "/contents/workshops/", `${slug}/index.mdx`);
+function getContentPath(slug: string) {
+  return path.join(process.cwd(), "/contents/", `${slug}/index.mdx`);
 }
 
 // for copying the code
@@ -178,7 +149,6 @@ const postProcess = () => (tree: any) => {
   visit(tree, "element", (node) => {
     if (node?.type === "element" && node?.tagName === "pre") {
       node.properties["raw"] = node.raw;
-      // console.log(node);
     }
   });
 };

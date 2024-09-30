@@ -1,13 +1,13 @@
-import { CourseLeftbar } from "@/components/CourseLeftbar";
+import { Leftbar } from "@/components/Leftbar";
 
-export default function DocsLayout({
+export default function ContentLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <div className="flex items-start gap-10">
-      <CourseLeftbar key="leftbar" />
+      <Leftbar key="leftbar" />
       <div className="flex-[4]">{children}</div>{" "}
     </div>
   );

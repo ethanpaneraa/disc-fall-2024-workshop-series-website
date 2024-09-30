@@ -1,9 +1,7 @@
-import { title } from "process";
-
 export type EachRoute = {
   title: string;
-  heading?: string;
   href: string;
+  basePath?: string;
   noLink?: true;
   items?: EachRoute[];
 };
@@ -13,94 +11,9 @@ export const ROUTES: EachRoute[] = [
     title: "Getting Started",
     href: "/getting-started",
     noLink: true,
-    heading: "Course Content",
+    basePath: "/content",
     items: [
       { title: "Introduction", href: "/introduction" },
-      { title: "Project Overview", href: "/project-introduction" },
-      //     {
-      //       title: "Installation",
-      //       href: "/installation",
-      //       items: [
-      //         { title: "Laravel", href: "/laravel" },
-      //         { title: "React", href: "/react" },
-      //         { title: "Gatsby", href: "/gatsby" },
-      //       ],
-      //     },
-      //     { title: "Quick Start Guide", href: "/quick-start-guide" },
-      //     {
-      //       title: "Project Structure",
-      //       href: "/project-structure",
-      //       items: [
-      //         { title: "Layouts", href: "/layouts" },
-      //         { title: "Integrations", href: "/integrations" },
-      //         {
-      //           title: "Manual",
-      //           href: "/manual",
-      //           items: [
-      //             { title: "JavaScript", href: "/javascript" },
-      //             { title: "Typescript", href: "/typescript" },
-      //             { title: "Golang", href: "/golang" },
-      //           ],
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       title: "FAQ",
-      //       href: "/faq",
-      //     },
-      //   ],
-      // },
-      // {
-      //   title: "Server Actions",
-      //   href: "/server-actions",
-      //   noLink: true,
-      //   items: [
-      //     { title: "getSession", href: "/getSession" },
-      //     { title: "getToken", href: "/getToken" },
-      //     { title: "getRole", href: "/getRole" },
-      //   ],
-      // },
-      // {
-      //   title: "React Hooks",
-      //   href: "/react-hooks",
-      //   noLink: true,
-      //   items: [
-      //     { title: "useSession", href: "/use-session" },
-      //     { title: "useFetch", href: "/use-fetch" },
-      //     { title: "useAuth", href: "/use-auth" },
-      //     { title: "useProduct", href: "/use-product" },
-      //     { title: "useOrder", href: "/use-order" },
-      //     { title: "useCart", href: "/use-cart" },
-      //     { title: "usePayment", href: "/use-payment" },
-      //     { title: "useShipping", href: "/use-shipping" },
-      //     { title: "useNotification", href: "/use-notification" },
-      //     { title: "useReview", href: "/use-review" },
-      //     { title: "useInventory", href: "/use-inventory" },
-      //     { title: "useUser", href: "/use-user" },
-      //     { title: "useSettings", href: "/use-settings" },
-      //     { title: "useAnalytics", href: "/use-analytics" },
-      //     { title: "useTheme", href: "/use-theme" },
-      //     { title: "useRouter", href: "/use-router" },
-      //     { title: "useData", href: "/use-data" },
-      //   ],
-      // },
-    ],
-  },
-  // {
-  //   title: "Assignments",
-  //   href: "/assignments",
-  //   noLink: true,
-  //   heading: "Course Content",
-  //   items: [{ title: "Assignment 1", href: "/assignment-1" }],
-  // },
-  {
-    title: "Workshops",
-    href: "",
-    noLink: true,
-    heading: "Workshops",
-    items: [
-      { title: "Introduction", href: "/introduction" },
-      { title: "Workshop 1", href: "/workshop-1" },
     ],
   },
 ];

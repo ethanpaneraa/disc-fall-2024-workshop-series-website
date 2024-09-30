@@ -9,19 +9,9 @@ import { Logo, NavMenu } from "./navbar";
 import { Button } from "./ui/button";
 import { AlignLeftIcon } from "lucide-react";
 import { DialogTitle } from "./ui/dialog";
-import WorkshopsMenu from "@/components/workshops-menu-bar";
+import Menu from "./menu-bar";
 
-export function WorkshopsLeftBar() {
-  return (
-    <aside className="md:flex hidden flex-[1] min-w-[238px] sticky top-16 flex-col h-[94.5vh] overflow-y-auto">
-      <div className="py-4">
-        <WorkshopsMenu />
-      </div>
-    </aside>
-  );
-}
-
-export function SheetLeftBar() {
+export function SheetLeftbar() {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -41,10 +31,11 @@ export function SheetLeftBar() {
             <NavMenu isSheet />
           </div>
           <div className="mx-2 px-5">
-            <WorkshopsMenu isSheet />
+            <Menu isSheet />
           </div>
         </div>
       </SheetContent>
     </Sheet>
   );
 }
+
