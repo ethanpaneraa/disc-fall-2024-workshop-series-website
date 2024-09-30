@@ -7,7 +7,7 @@ import { BasePath } from "./global_constants";
 
 export default function Menu({ isSheet = false }) {
   const pathname = usePathname();
-  const basePath = Object.values(BasePath).find((path) => pathname.startsWith(path));
+  const basePath = Object.values(BasePath).find((path) => pathname.startsWith(`/${path}`));
   if (!basePath) return null;
 
   return (
