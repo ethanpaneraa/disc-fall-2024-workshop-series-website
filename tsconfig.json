@@ -21,6 +21,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "contents/course/assignments/assignment-1/page.mdx",
+    "contents/workshops/**/*.mdx"
+  ],
   "exclude": ["node_modules"]
 }

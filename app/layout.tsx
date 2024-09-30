@@ -8,9 +8,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AriaDocs - Template",
-  metadataBase: new URL("https://ariadocs.vercel.app/"),
+  metadataBase: new URL(
+    "https://disc-fall-2024-workshop-series-website.vercel.app/"
+  ),
   description:
-    "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements.",
+    "DISC Fall 2024 Workshop Series Website is a website that provides information about the workshops that are being conducted in the Fall 2024 Quarter.",
 };
 
 export default function RootLayout({

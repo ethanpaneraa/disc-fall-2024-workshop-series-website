@@ -91,7 +91,7 @@ export default function Search() {
                         "dark:hover:bg-stone-900 hover:bg-stone-100 w-full px-3 rounded-sm text-sm flex items-center gap-2.5",
                         paddingClass
                       )}
-                      href={`/docs${item.href}`}
+                      href={`/course${item.href}`}
                     >
                       <div
                         className={cn(
@@ -118,5 +118,4 @@ const paddingMap = {
   1: "pl-2",
   2: "pl-4",
   3: "pl-10",
-  // Add more levels if needed
 } as const;

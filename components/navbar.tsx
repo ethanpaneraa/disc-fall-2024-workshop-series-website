@@ -4,13 +4,17 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Search from "./search";
 import Anchor from "./anchor";
-import { SheetLeftbar } from "./leftbar";
+import { SheetLeftbar } from "./CourseLeftbar";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
 export const NAVLINKS = [
   {
     title: "Course Content",
     href: `/course${page_routes[0].href}`,
+  },
+  {
+    title: "Workshops",
+    href: `/workshops${page_routes[3].href}`,
   },
   // {
   //   title: "Blog",
@@ -76,7 +80,7 @@ export function Logo() {
           clip-rule="evenodd"
         ></path>
       </svg>
-      <h2 className="text-md font-bold">DISC Fall 2024 Workshops Website</h2>
+      <h2 className="text-md font-bold">DISC Fall 2024 Workshops</h2>
     </Link>
   );
 }

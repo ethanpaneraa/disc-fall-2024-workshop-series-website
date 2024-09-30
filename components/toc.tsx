@@ -1,8 +1,17 @@
-import { getDocsTocs } from "@/lib/markdown";
+import { getTocs } from "@/lib/markdown";
 import TocObserver from "./toc-observer";
 
-export default async function Toc({ path }: { path: string }) {
-  const tocs = await getDocsTocs(path);
+type TocProps = {
+  path: string;
+  type: "docs" | "workshops";
+};
+
+export default async function Toc({ path, type }: TocProps) {
+  const tocs = await getTocs(path, type);
+
+  if (tocs.length === 0) {
+    return null;
+  }
 
   return (
     <div className="lg:flex hidden toc flex-[1] min-w-[238px] py-8 sticky top-16 h-[95.95vh]">
