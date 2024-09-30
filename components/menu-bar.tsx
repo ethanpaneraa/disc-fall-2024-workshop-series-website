@@ -3,12 +3,11 @@
 import { ROUTES } from "@/lib/routes-config";
 import SubLink from "./sublink";
 import { usePathname } from "next/navigation";
-
-const VALID_PATHS = ["/content", "/workshops"];
+import { BasePath } from "./global_constants";
 
 export default function Menu({ isSheet = false }) {
   const pathname = usePathname();
-  const basePath = VALID_PATHS.find((path) => pathname.startsWith(path));
+  const basePath = Object.values(BasePath).find((path) => pathname.startsWith(path));
   if (!basePath) return null;
 
   return (

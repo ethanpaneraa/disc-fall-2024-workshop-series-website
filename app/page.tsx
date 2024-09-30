@@ -1,3 +1,4 @@
+import { BasePath } from "@/components/global_constants";
 import { buttonVariants } from "@/components/ui/button";
 import { page_routes } from "@/lib/routes-config";
 import { MoveUpRightIcon, TerminalIcon } from "lucide-react";
@@ -21,7 +22,7 @@ export default function Home() {
       </p>
       <div className="flex flex-row items-center gap-5">
         <Link
-          href={`/content${page_routes[0].href}`}
+          href={`/${BasePath.CONTENT}${page_routes[0].href}`}
           className={buttonVariants({ className: "px-6", size: "lg" })}
         >
           Get Started

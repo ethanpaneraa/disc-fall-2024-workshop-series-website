@@ -5,18 +5,20 @@ import Anchor from "./anchor";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
 import { SheetLeftbar } from "./SheetLeftBar";
+import { BasePath } from "./global_constants";
+
 export const NAVLINKS = [
   {
     title: "Content",
-    href: `/content${page_routes[0].href}`,
+    href: `/${BasePath.CONTENT}${page_routes[0].href}`,
   },
   {
     title: "Schedule",
-    href: `/schedule`,
+    href: `/${BasePath.SCHEDULE}`,
   },
   {
     title: "About DISC",
-    href: `/about`,
+    href: `/${BasePath.ABOUT}`,
   },
 ];
 

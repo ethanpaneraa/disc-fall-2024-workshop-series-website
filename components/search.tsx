@@ -13,6 +13,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import Anchor from "./anchor";
 import { advanceSearch, cn } from "@/lib/utils";
+import { BasePath } from "./global_constants";
 
 export default function Search() {
   const [searchedInput, setSearchedInput] = useState("");
@@ -92,7 +93,8 @@ export default function Search() {
                         paddingClass
                       )}
                       // todo: why are we hardcoding this
-                      href={`/content${item.href}`}
+                      // is this only searching stuff under Content?
+                      href={`/${BasePath.CONTENT}${item.href}`}
                     >
                       <div
                         className={cn(

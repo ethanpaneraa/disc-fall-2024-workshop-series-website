@@ -7,7 +7,7 @@ export default function ScheduleLayout({
 }>) {
   return (
     <div className="flex items-start gap-10">
-      <Leftbar key="left" />
+      <Leftbar key="leftbar" />
       <div className="flex-[4]">{children}</div>{" "}
     </div>
   );
