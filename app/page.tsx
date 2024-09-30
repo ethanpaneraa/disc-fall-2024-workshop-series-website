@@ -17,7 +17,7 @@ export default function Home() {
       </Link> */}
       <div>
         <img src={"/disc-logo.png"} alt="disco logo" className="w-96 h-auto mb-3" />
-        <h2 className="text-sm mb-8 sm:text-xl font-bold text-[#23ffe3]">Discover & Innovate for Social Change</h2>
+        <h2 className="text-sm mb-8 sm:text-xl font-bold text-logo">Discover & Innovate for Social Change</h2>
       </div>
       <h1 className="text-xl font-bold mb-4 sm:text-6xl">
         Fall 2024 Workshop Series
@@ -33,7 +33,7 @@ export default function Home() {
           href={`/course${page_routes[0].href}`}
           className={buttonVariants({ className: "px-6", size: "lg" })}
         >
-          Get Stared
+          Learn More
         </Link>
         <Link
           href="https://discord.gg/mqRQ7s9CyS"
