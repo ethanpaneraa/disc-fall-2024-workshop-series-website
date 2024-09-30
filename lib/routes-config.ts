@@ -95,7 +95,7 @@ export const ROUTES: EachRoute[] = [
   },
   {
     title: "Workshops",
-    href: "/",
+    href: "",
     noLink: true,
     heading: "Workshops",
     items: [
