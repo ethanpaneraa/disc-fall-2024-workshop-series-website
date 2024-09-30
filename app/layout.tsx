@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AriaDocs - Template",
+  title: "DISC Fall 2024 Workshop Series Website",
   metadataBase: new URL(
     "https://disc-fall-2024-workshop-series-website.vercel.app/"
   ),
