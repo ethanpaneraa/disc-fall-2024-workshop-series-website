@@ -1,5 +1,3 @@
-// for page navigation & to sort on leftbar
-
 export type EachRoute = {
   title: string;
   href: string;
@@ -14,6 +12,7 @@ export const ROUTES: EachRoute[] = [
     noLink: true,
     items: [
       { title: "Introduction", href: "/introduction" },
+      { title: "Project Overview", href: "/project-introduction" },
       {
         title: "Installation",
         href: "/installation",
@@ -41,7 +40,6 @@ export const ROUTES: EachRoute[] = [
           },
         ],
       },
-      { title: "Changelog", href: "/changelog" },
       {
         title: "FAQ",
         href: "/faq",
