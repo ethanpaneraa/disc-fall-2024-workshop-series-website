@@ -1,15 +1,23 @@
 import { BasePath } from "@/components/global_constants";
 import { buttonVariants } from "@/components/ui/button";
 import { page_routes } from "@/lib/routes-config";
-import { MoveUpRightIcon, TerminalIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="flex sm:min-h-[91vh] min-h-[88vh] flex-col items-center justify-center text-center px-2 py-8">
       <div>
-        <img src={"/disc-logo.png"} alt="disco logo" className="w-96 h-auto mb-8" />
-        <h2 className="text-sm mb-6 sm:text-xl font-bold text-logo">Discover & Innovate for Social Change</h2>
+        <Image
+          src={"/disc-logo.png"}
+          alt="disco logo"
+          width={384}
+          height={384}
+          className="mb-8"
+        />
+        <h2 className="text-sm mb-6 sm:text-xl font-bold text-logo">
+          Discover & Innovate for Social Change
+        </h2>
       </div>
       <h1 className="text-xl font-bold mb-4 sm:text-6xl">
         Fall Workshop Series

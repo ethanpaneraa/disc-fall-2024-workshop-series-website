@@ -54,8 +54,6 @@ async function parseMdx<Frontmatter>(rawMdx: string) {
   });
 }
 
-// logic for docs
-
 type BaseMdxFrontmatter = {
   title: string;
   description: string;
@@ -83,7 +81,7 @@ export async function getTocHeadings(slug: string) {
 
 export async function getTocs(
   path: string,
-  type: BasePath,
+  type: BasePath
 ): Promise<{ level: number; text: string; href: string }[]> {
   try {
     return (await getTocHeadings(`${type}/${path}`)) || [];
