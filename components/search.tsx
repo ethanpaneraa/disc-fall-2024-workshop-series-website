@@ -21,7 +21,7 @@ export default function Search() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === "k") {
+      if (event.metaKey && event.key === "k") {
         event.preventDefault();
         setIsOpen(true);
       }
@@ -37,6 +37,13 @@ export default function Search() {
     () => advanceSearch(searchedInput.trim()),
     [searchedInput]
   );
+
+  const getBasePath = (href: string) => {
+    const firstSegment = href.split("/")[1];
+    return Object.values(BasePath).includes(firstSegment as BasePath)
+      ? firstSegment
+      : BasePath.CONTENT;
+  };
 
   return (
     <div>
@@ -83,7 +90,9 @@ export default function Search() {
               {filteredResults.map((item) => {
                 const level = (item.href.split("/").slice(1).length -
                   1) as keyof typeof paddingMap;
+
                 const paddingClass = paddingMap[level];
+                const basePath = getBasePath(item.href);
 
                 return (
                   <DialogClose key={item.href} asChild>
@@ -92,9 +101,7 @@ export default function Search() {
                         "dark:hover:bg-stone-900 hover:bg-stone-100 w-full px-3 rounded-sm text-sm flex items-center gap-2.5",
                         paddingClass
                       )}
-                      // todo: why are we hardcoding this
-                      // is this only searching stuff under Content?
-                      href={`/${BasePath.CONTENT}${item.href}`}
+                      href={`/${basePath}${item.href}`}
                     >
                       <div
                         className={cn(
