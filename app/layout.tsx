@@ -7,12 +7,12 @@ import { Footer } from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DISC Fall 2024 Workshop Series Website",
+  title: "DISC Fall Workshop Series Website",
   metadataBase: new URL(
     "https://disc-fall-2024-workshop-series-website.vercel.app/"
   ),
   description:
-    "DISC Fall 2024 Workshop Series Website is a website that provides information about the workshops that are being conducted in the Fall 2024 Quarter.",
+    "DISC Fall Workshop Series Website is a website that provides information about the workshops that are being conducted in the Fall 2024 Quarter.",
 };
 
 export default function RootLayout({

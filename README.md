@@ -6,10 +6,12 @@ You can run this project locally by doing the following:
 
 ```bash
 git clone https://github.com/ethanpaneraa/disc-fall-2024-workshop-series-website.git
+npm i
 ```
 
 ```bash
 cd disc-fall-2024-workshop-series-website
+npm i
 ```
 
 ```bash

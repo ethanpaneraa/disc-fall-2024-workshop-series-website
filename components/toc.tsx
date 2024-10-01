@@ -1,9 +1,10 @@
 import { getTocs } from "@/lib/markdown";
 import TocObserver from "./toc-observer";
+import { BasePath } from "./global_constants";
 
 type TocProps = {
   path: string;
-  type: "docs" | "workshops";
+  type: BasePath;
 };
 
 export default async function Toc({ path, type }: TocProps) {
@@ -14,7 +15,7 @@ export default async function Toc({ path, type }: TocProps) {
   }
 
   return (
-    <div className="lg:flex hidden toc flex-[1] min-w-[238px] py-8 sticky top-16 h-[95.95vh]">
+    <div className="lg:flex hidden toc flex-[1] min-w-[238px] py-10 sticky top-16 h-[95.95vh]">
       <div className="flex flex-col gap-3 w-full pl-2">
         <h3 className="font-medium text-sm">On this page</h3>
         <div className="pb-2 pt-0.5 overflow-y-auto">

@@ -13,6 +13,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import Anchor from "./anchor";
 import { advanceSearch, cn } from "@/lib/utils";
+import { BasePath } from "./global_constants";
 
 export default function Search() {
   const [searchedInput, setSearchedInput] = useState("");
@@ -91,7 +92,9 @@ export default function Search() {
                         "dark:hover:bg-stone-900 hover:bg-stone-100 w-full px-3 rounded-sm text-sm flex items-center gap-2.5",
                         paddingClass
                       )}
-                      href={`/course${item.href}`}
+                      // todo: why are we hardcoding this
+                      // is this only searching stuff under Content?
+                      href={`/${BasePath.CONTENT}${item.href}`}
                     >
                       <div
                         className={cn(
