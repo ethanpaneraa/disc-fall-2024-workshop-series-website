@@ -11,7 +11,9 @@ type PageProps = {
   params: { slug: string[] };
 };
 
-export default async function ContentPage({ params: { slug = [] } }: PageProps) {
+export default async function ContentPage({
+  params: { slug = [] },
+}: PageProps) {
   const pathName = slug.join("/");
   const res = await getContentsForSlug(`${BasePath.CONTENT}/${pathName}`);
 

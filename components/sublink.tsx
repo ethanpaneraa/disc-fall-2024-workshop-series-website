@@ -19,16 +19,19 @@ export default function SubLink({
   noLink,
   level,
   isSheet,
+  basePath,
 }: EachRoute & { level: number; isSheet: boolean }) {
   const path = usePathname();
   const [isOpen, setIsOpen] = useState(level == 0);
 
+  const fullHref = basePath ? `/${basePath}${href}` : href;
+
   useEffect(() => {
-    if (path != href && path.includes(href)) setIsOpen(true);
-  }, [href, path]);
+    if (path !== fullHref && path.includes(fullHref)) setIsOpen(true);
+  }, [fullHref, path]);
 
   const Comp = (
-    <Anchor activeClassName="text-primary font-medium" href={href}>
+    <Anchor activeClassName="text-primary font-medium" href={fullHref}>
       {title}
     </Anchor>
   );
@@ -77,9 +80,10 @@ export default function SubLink({
             {items?.map((innerLink) => {
               const modifiedItems = {
                 ...innerLink,
-                href: `${href + innerLink.href}`,
+                href: `${href}${innerLink.href}`,
                 level: level + 1,
                 isSheet,
+                basePath,
               };
               return <SubLink key={modifiedItems.href} {...modifiedItems} />;
             })}
