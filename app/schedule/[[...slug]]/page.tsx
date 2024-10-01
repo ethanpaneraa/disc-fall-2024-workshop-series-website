@@ -22,7 +22,7 @@ export default async function SchedulePage({
   const { frontmatter, content } = res;
 
   return (
-    <div className="flex items-center gap-10">
+    <div className="flex items-start gap-10">
       <div className="flex-[3] pt-10">
         <GenericBreadcrumb paths={slug} />
         <Typography>
