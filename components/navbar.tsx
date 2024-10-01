@@ -1,37 +1,25 @@
 import { ModeToggle } from "@/components/theme-toggle";
-import { GithubIcon, TwitterIcon, CommandIcon } from "lucide-react";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
 import Search from "./search";
 import Anchor from "./anchor";
-import { SheetLeftbar } from "./CourseLeftbar";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
+import { SheetLeftbar } from "./SheetLeftBar";
+import { BasePath } from "./global_constants";
+
 export const NAVLINKS = [
   {
-    title: "Course Content",
-    href: `/course${page_routes[0].href}`,
+    title: "Content",
+    href: `/${BasePath.CONTENT}${page_routes[0].href}`,
   },
   {
-    title: "Workshops",
-    href: `/workshops${page_routes[3].href}`,
+    title: "Schedule",
+    href: `/${BasePath.SCHEDULE}`,
   },
-  // {
-  //   title: "Blog",
-  //   href: "/blog",
-  // },
-  // {
-  //   title: "Examples",
-  //   href: "#",
-  // },
-  // {
-  //   title: "Guides",
-  //   href: "#",
-  // },
-  // {
-  //   title: "Community",
-  //   href: "https://github.com/nisabmohd/Aria-Docs/discussions",
-  // },
+  {
+    title: "About DISC",
+    href: `/${BasePath.ABOUT}`,
+  },
 ];
 
 export function Navbar() {
@@ -80,7 +68,7 @@ export function Logo() {
           clip-rule="evenodd"
         ></path>
       </svg>
-      <h2 className="text-md font-bold">DISC Fall 2024 Workshops</h2>
+      <h2 className="text-md font-bold">DISC Workshop Series</h2>
     </Link>
   );
 }

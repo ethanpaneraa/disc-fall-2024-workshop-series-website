@@ -1,20 +1,21 @@
-import DocsBreadcrumb from "@/components/docs-breadcrumb";
 import Pagination from "@/components/pagination";
 import Toc from "@/components/toc";
 import { page_routes } from "@/lib/routes-config";
 import { notFound } from "next/navigation";
-import { getWorkshopsForSlug } from "@/lib/markdown";
+import { getContentsForSlug } from "@/lib/markdown";
 import { Typography } from "@/components/typography";
+import GenericBreadcrumb from "@/components/generic-breadcrumb";
+import { BasePath } from "@/components/global_constants";
 
 type PageProps = {
   params: { slug: string[] };
 };
 
-export default async function WorkshopsPage({
+export default async function SchedulePage({
   params: { slug = [] },
 }: PageProps) {
   const pathName = slug.join("/");
-  const res = await getWorkshopsForSlug(pathName);
+  const res = await getContentsForSlug(`${BasePath.SCHEDULE}/${pathName}`);
 
   if (!res) notFound();
 
@@ -23,7 +24,7 @@ export default async function WorkshopsPage({
   return (
     <div className="flex items-center gap-10">
       <div className="flex-[3] pt-10">
-        <DocsBreadcrumb paths={slug} />
+        <GenericBreadcrumb paths={slug} />
         <Typography>
           <h1 className="text-3xl -mt-2">{frontmatter.title}</h1>
           <p className="-mt-4 text-muted-foreground text-[16.5px]">
@@ -33,14 +34,15 @@ export default async function WorkshopsPage({
           <Pagination pathname={pathName} />
         </Typography>
       </div>
-      <Toc path={pathName} type="workshops" />
+      <Toc path={pathName} type={BasePath.SCHEDULE} />
     </div>
   );
 }
 
 export async function generateMetadata({ params: { slug = [] } }: PageProps) {
   const pathName = slug.join("/");
-  const res = await getWorkshopsForSlug(pathName);
+  const res = await getContentsForSlug(`${BasePath.SCHEDULE}/${pathName}`);
+
   if (!res) return null;
   const { frontmatter } = res;
   return {

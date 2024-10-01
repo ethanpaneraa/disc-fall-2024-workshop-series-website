@@ -8,17 +8,16 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Fragment } from "react";
 
-export default function DocsBreadcrumb({ paths }: { paths: string[] }) {
+export default function GenericBreadcrumb({ paths }: { paths: string[] }) {
+  if (paths.length === 0) return null;
+
   return (
     <div className="pb-5">
       <Breadcrumb>
         <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink>Course</BreadcrumbLink>
-          </BreadcrumbItem>
           {paths.map((path, index) => (
             <Fragment key={path}>
-              <BreadcrumbSeparator />
+              {index > 0 && <BreadcrumbSeparator />}
               <BreadcrumbItem>
                 {index < paths.length - 1 ? (
                   <BreadcrumbLink className="a">
