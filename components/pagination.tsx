@@ -6,7 +6,6 @@ import { BasePath } from "./global_constants";
 export default function Pagination({ pathname }: { pathname: string }) {
   const res = getPreviousNext(pathname);
 
-  // todo: this needs to be updated to paginate only within certain pages
   return (
     <div className="flex items-center justify-between sm:py-7 py-5">
       <div>

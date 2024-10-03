@@ -107,10 +107,6 @@ export async function getContentsForSlug(
 }
 
 export function getPreviousNext(path: string) {
-  // todo: this needs to be fixed in the future
-  // either every page takes you to the next page, in which case
-  // routes needs to be updated to contain all the routes,
-  // or prev/next is only used within a single page's subpages
   const index = page_routes.findIndex(({ href }) => href == `/${path}`);
 
   if (index === -1) {
