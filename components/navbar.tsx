@@ -64,8 +64,8 @@ export function Logo() {
         <path
           d="M 5.1807 9.9704 L 1.7226 7.0688 L 4.6243 3.6107 L 10.4804 9.5067 L 13.3821 6.0487 L 9.924 3.147"
           stroke="currentColor"
-          stroke-width="2"
-          fill-rule="nonzero"
+          strokeWidth="2"
+          fillRule="nonzero"
         ></path>
       </svg>
       <h2 className="text-md font-bold">DISC Workshop Series</h2>

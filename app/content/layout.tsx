@@ -5,6 +5,7 @@ export default function ContentLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log('content layout')
   return (
     <div className="flex items-start gap-10">
       <Leftbar key="leftbar" />
