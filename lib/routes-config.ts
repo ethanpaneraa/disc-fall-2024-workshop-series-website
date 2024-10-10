@@ -19,7 +19,10 @@ export const ROUTES: EachRoute[] = [
     href: "/workshops",
     noLink: true,
     basePath: "content",
-    items: [{ title: "Workshop 1", href: "/workshop-1" }],
+    items: [
+      { title: "Workshop 1", href: "/workshop-1" },
+      { title: "Workshop 2", href: "/workshop-2" },
+    ],
   },
   {
     title: "Assignments",
@@ -28,7 +31,7 @@ export const ROUTES: EachRoute[] = [
     basePath: "content",
     items: [
       { title: "Project Overview", href: "/project-overview" },
-      { title: "Assignment 1", href: "/assignment-1" }
+      { title: "Assignment 1", href: "/assignment-1" },
     ],
   },
 ];
