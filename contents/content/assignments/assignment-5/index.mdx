@@ -109,6 +109,8 @@ In assignment 5, you’ll add routing and API calls to your web app.
     opening this URL in your browser: https://disc-assignment-5-users-api.onrender.com/api/users.
     That’s right, every time you go to a link in your browser, it’s really just making
     a `HTTP GET` request to that url and displaying the result.
+- *Having trouble? Check out Ethan's 
+[user API demo](https://www.loom.com/share/87b05404e35e42e5b48758ea7956d9b5).*
 
 ## Additional requirements:
 
@@ -141,21 +143,26 @@ In assignment 5, you’ll add routing and API calls to your web app.
 
 ## Resources
 
-- The workshop 5 slides and recording, which you can find [here](/content/workshops/workshop-5)
+- The workshop 5 slides and recordings, which you can find [here](/content/workshops/workshop-5).
+  - We have re-recorded the presentation section about concurrency & asynchronous 
+  functions to improve our explanations of those concepts.
 - The workshop 4 slides and recording, which you can find [here](/content/workshops/workshop-4).
-  The useEffect section may be useful.
-- [Demo of the Users Api](https://www.loom.com/share/87b05404e35e42e5b48758ea7956d9b5)
-- [File for creating forms for handling more complex request](https://github.com/DISC-NU/workshop-5-frontend/blob/main/src/pages/ProductForm.tsx). _you essentially repeat the same logic for the `users` api, you're just changing some parts of the code_
-  we built during the workshop.
+  The useEffect section may be particularly useful.
 - Routing with `react-router-dom`
   - [Lightweight tutorial by W3Schools](https://www.w3schools.com/react/react_router.asp)
   - [How to use route parameters](https://reactrouter.com/en/main/hooks/use-params).
     This is the `/:id` stuff you see in some routes.
   - [More in-depth tutorial](https://blog.logrocket.com/react-router-dom-tutorial-examples/)
   - [Deeper dive into it's implementation](https://reactrouter.com/en/main/start/concepts)
-- [How HTTP requests and responses work](https://www.realisable.co.uk/support/documentation/iman-user-guide/DataConcepts/WebRequestAnatomy.htm)
-- [Fetch API guide](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-- [multipart/form-data guide](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_XMLHttpRequest_and_the_FormData_object)
+- Making API requests
+  - [Demo of the Users Api](https://www.loom.com/share/87b05404e35e42e5b48758ea7956d9b5)
+  - [How HTTP requests and responses work](https://www.realisable.co.uk/support/documentation/iman-user-guide/DataConcepts/WebRequestAnatomy.htm)
+  - [Fetch API guide](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+  - [multipart/form-data guide](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_XMLHttpRequest_and_the_FormData_object)
+  - An [example](https://github.com/DISC-NU/workshop-5-frontend/blob/main/src/pages/ProductForm.tsx) 
+  of making multipart/form-data requests using the `FormData` object. 
+    - This example uses the products API from workshop 5, so your code will look a little 
+    different. But for the most part, it should look very similar.
 - Google
 - StackOverflow
 - Quora
