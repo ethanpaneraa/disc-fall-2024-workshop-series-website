@@ -56,15 +56,13 @@ and deploy some tricks to optimize its performance.
 
 - Performance
   - Every `.map` must use a key.
-  - Every time a single element is added to an array, it must be added to the end.
+  - Every time elements are added to an array, they must be added to the end.
   - Use at least one of [`useRef`, `useMemo`, `useCallback`, `React.memo`] to 
   improve the performance of your app.
-    - If your usage does not either reduce the amount of work done per render, 
+    - If used incorrectly, the performance of your app will not improve.
+    If your usage does not either reduce the amount of work done per render, 
     or reduce the number of times a component needs to re-render,
-    it does not count.
-    - If these tools are used incorrectly, the performance will not improve. 
-    Keep in mind how dependency arrays work and the persistence (or lack therof)
-    of variables. Take note of what is a reference.
+    it does not meet this requirement.
     - This is probably the least important of the core requirements.
 - Maintainability
   - Refactor your code to have a neat and logical file organization. 
@@ -89,6 +87,8 @@ separate responsibilities, and abstract away implementation details as much as p
 - When it comes to implementing performance optimizations, `console.log` is your best friend.
 Use it to determine when a component has rerendered, what triggered the rerender, etc.
   - To that end, `useEffect` is also very helpful.
+- Keep in mind how dependency arrays work and the persistence (or lack therof)
+  of variables within functions.
 - Add comments to your code to help keep track of what exactly is a reference.
 - When reorganizing your code, think about how long it would take for a
 completely new set of eyes to understand what your code is doing.
