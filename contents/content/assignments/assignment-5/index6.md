@@ -26,12 +26,13 @@ and deploy some tricks to optimize its performance.
    - Run `git branch` to check what branch you are on. 
    - Run `git checkout branch-name` to switch to a different branch.
 
-3. Run `git checkout -b hw-5` to create a new branch called “hw-5” that
-   branches off your hw-4 branch.
+3. Run `git checkout -b hw-6` to create a new branch called “hw-6” that
+   branches off your hw-5 branch.
    **All of the work on your project MUST be done on this branch.
-   You should NOT modify the main branch, or the hw-4 branch.**
+   You should NOT modify the main branch, or the branches of
+   any previous assignments.**
 
-4. Run `git push -u origin hw-5` to publish this new branch on github.
+4. Run `git push -u origin hw-6` to publish this new branch on github.
 
 5. Dedicate one terminal window to running your code with npm.
 
@@ -47,8 +48,9 @@ and deploy some tricks to optimize its performance.
 
 7. Now you are ready! Go forth and code!
    - As you progress on this assignment, continue grouping your changes into commits and
-     pushing them to the hw-5 branch on github.
-     All of your commits MUST be on the hw-5 branch, not the main branch or the hw-4 branch.
+     pushing them to the hw-6 branch on github.
+     All of your commits MUST be on the hw-6 branch, not the main branch or the branches
+     of prevous assignments.
 
 ## Core requirements
 
