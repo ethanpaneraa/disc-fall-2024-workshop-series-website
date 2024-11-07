@@ -130,5 +130,3 @@ won't learn anything.
     - **Do NOT merge the pull request**
 3. Once you've created the pull request, copy its URL from the browser.
 4. Fill out [this google form](https://forms.gle/d2gjt5HFtBjZEUGb9)
-
-
