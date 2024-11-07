@@ -54,133 +54,81 @@ and deploy some tricks to optimize its performance.
 
 ## Core requirements
 
-- Add 1 new page to your web app using `react-router-dom`.
-  - This [W3 schools tutorial](https://www.w3schools.com/react/react_router.asp) is great.
-- Retrieve and display information from the users API.
-  Use the `getAllUsers` function to get an array of all the users from the database.
-  Once you have this array, you can map over it to display a card for each user.
-  - Hint 1: store the array of users in a state variable
-  - Hint 2: you only want to fetch the users the first time you load the page,
-    instead of every time your app renders. `useEffect` can help us out here.
+- Performance
+  - Every `.map` must use a key.
+  - Every time a single element is added to an array, it must be added to the end.
+  - Use at least one of [`useRef`, `useMemo`, `useCallback`, `React.memo`] to 
+  improve the performance of your app.
+    - If your usage does not either reduce the amount of work done per render, 
+    or reduce the number of times a component needs to re-render,
+    it does not count.
+    - If these tools are used incorrectly, the performance will not improve. 
+    Keep in mind how dependency arrays work and the persistence (or lack therof)
+    of variables. Take note of what is a reference.
+    - This is probably the least important of the core requirements.
+- Maintainability
+  - Refactor your code to have a neat and logical file organization. 
+    - Each file should have limited responsibility.
+    - Use subdirectories to organize groups of files.
+  - Create and use 1 generic component.
+  - Create and use 1 custom hook.
 
-## The users API
+## Additional requirements
 
-- An API is just a group of functions. The users API is a group of functions
-  we’ve built that enable you to interact with a real database of users.
-  - You’ll be building your own database and API in a couple weeks!
-- Here are the functions we provide in this API:
-  - `getAllUsers`: gives an array of all the users in the database
-  - `getUserByID`: gives information about a specific user in the database
-  - `createUser`: adds a new user to the database
-  - `updateUser`: updates an existing user in the database
-  - `deleteUser`: deletes a user from the database
-- A machine in Ohio is set up with the code to execute these functions.
-  This machine is called a server because its job is to serve information and provide other services
-  (such as modifying a database). In order to run functions of the users API,
-  you’ll need to communicate with this server.
-  - The scheme that the server uses to communicate is ` https`.
-    This means that you will communicate with this server by making HTTP requests.
-  - The domain/hostname of the server is: ` disc-assignment-5-users-api.onrender.com`
-- Below is the information you’ll need to build your requests
+- Use more of these: [`useRef`, `useMemo`, `useCallback`, `React.memo`]. Again,
+  ensure that each time you use one of these functions, it is actually effective in improving
+  the performance of your app.
+- Create more generic components and custom hooks. Try to eliminate redundancy, 
+separate responsibilities, and abstract away implementation details as much as possible.
+  - Don't overdo it though. Only abstract where it makes sense.
+- Try out `useContext`.
 
-| Function    | Method | Path           | Additional request information                                                                                                                                                                                                                        | Response                                                                                                                                                                                                                                                                                                                                                  |
-| ----------- | ------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| getAllUsers | GET    | /api/users     | none                                                                                                                                                                                                                                                  | An array of `User` objects. <br/> Each `User` object has the following fields: <br/><ul><li>`id`: integer</li><li>`firstName`: string</li><li>`lastName`: string</li><li>`email`: string</li><li>`bio`: string</li><li>`major`: string</li><li>`graduationYear`: string</li><li>`profilePicture`: string</li><li>`created_at`: timestamp string</li></ul> |
-| getUserByID | GET    | /api/users/:id | none                                                                                                                                                                                                                                                  | A single `User` object                                                                                                                                                                                                                                                                                                                                    |
-| createUser  | POST   | /api/users     | The body of the request must contain these fields: <br/><ul><li>`firstName`: string</li><li>`lastName`: string</li><li>`email`: string</li><li>`bio`: string</li><li>`major`: string</li><li>`graduationYear`: string</li><li>`image`: File</li></ul> | A single `User` object representing the user you just created                                                                                                                                                                                                                                                                                             |
-| updateUser  | PUT    | /api/users/:id | The body of the request must contain these fields: <br/><ul><li>`firstName`: string</li><li>`lastName`: string</li><li>`email`: string</li><li>`bio`: string</li><li>`major`: string</li><li>`graduationYear`: string</li><li>`image`: File</li></ul> | A single `User` object representing the user you just updated                                                                                                                                                                                                                                                                                             |
-| deleteUser  | DELETE | /api/users/:id | none                                                                                                                                                                                                                                                  | none                                                                                                                                                                                                                                                                                                                                                      |
-|             |        |                |                                                                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                           |
-
-- For example, say I wanted to delete the user named “Bob”.
-  - First, I make a `GET` request to “https://disc-assignment-5-users-api.onrender.com/api/users”
-    to get information about all the users. Take note of how I constructed this URL
-    using the scheme + domain + path.
-  - Then, I search through the array of users to find the id corresponding to the user named “Bob”.
-    Let’s say Bob has id 28.
-  - Finally, I make a `DELETE` request to
-    “https://disc-assignment-5-users-api.onrender.com/api/users/28” to delete the user with id 28.
-- Use the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-  to make requests to the server in your JavaScript code.
-  - For `createUser`, and `updateUser`, the Content-Type you need to use for your
-    request body is `multipart/form-data`. If you are unfamiliar with how to
-    work with this type of content, read
-    [this guide](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_XMLHttpRequest_and_the_FormData_object)
-  - Remember that fetch returns a promise. How do we deal with promises?
-- **Important note**: the server will go to sleep if it hasn’t received any requests in a long time.
-  If that happens, the next time it receives a request, it will take a long time to
-  complete the request because it has to un-sleep. This means that some requests might
-  take up to 5 minutes to complete.
-  - To wake the server, you can make a `GET` request to it by
-    opening this URL in your browser: https://disc-assignment-5-users-api.onrender.com/api/users.
-    That’s right, every time you go to a link in your browser, it’s really just making
-    a `HTTP GET` request to that url and displaying the result.
-- *Having trouble? Check out Ethan's 
-[user API demo](https://www.loom.com/share/87b05404e35e42e5b48758ea7956d9b5).*
-
-## Additional requirements:
-
-- Add more pages to your web app.
-- Use the other functions in the users API to add more features to your web app.
-  We recommend integrating the functions in this order:
-  - `getAllUsers`
-  - `getUserByID` – should be very easy after you have `getAllUsers` working
-  - `createUser`
-  - `updateUser` – should be very easy after you have `createUser` working
-  - `deleteUser` – should be very easy after you have `getUserByID` working
-    - Each time after you delete a user, create a new user.
-      Deleting users deletes them for everyone else working on this assignment,
-      and we don’t want to be left with 0 users. This means
-      **do not implement `deleteUser` until you have `createUser` working**.
-- Add a loading screen or animation that shows up while the requests load.
 
 ## Tips
 
-- Read this page very carefully.
-- Use `console.log` everywhere all the time to see what all your
-  variables look like. This is especially helpful when working with complex objects,
-  such as fetch response objects.
-- The first route you add, and the first API you call, will always be the hardest.
-  Once you figure it out once, it will be much easier to do it again!
-- In almost all cases, you should be using the response from an API call to set some state variable.
-- If you keep your code organized, this assignment will be easier. We love helper functions.
-- There is a small chance that the users API doesn't work due to an issue in our implementation.
-  If you suspect that is the case, reach out to Ethan Pineda on discord.
+- When it comes to implementing performance optimizations, `console.log` is your best friend.
+Use it to determine when a component has rerendered, what triggered the rerender, etc.
+  - To that end, `useEffect` is also very helpful.
+- Add comments to your code to help keep track of what exactly is a reference.
+- When reorganizing your code, think about how long it would take for a
+completely new set of eyes to understand what your code is doing.
+You want to minimize that time.
+- When it comes to readability & maintainability, make sure your decisions
+are consistent. There is nothing worse than a codebase that looks like it is written 
+by several different people (even if that is actually the case!).
+- Don't worry if it's not perfect. Good is good enough.
 
 ## Resources
 
-- The workshop 5 slides and recordings, which you can find [here](/content/workshops/workshop-5).
-  - We have re-recorded the presentation section about concurrency & asynchronous 
-  functions to improve our explanations of those concepts.
+- The workshop 6 slides and recordings, which you can find [here](/content/workshops/workshop-6).
 - The workshop 4 slides and recording, which you can find [here](/content/workshops/workshop-4).
-  The useEffect section may be particularly useful.
-- Routing with `react-router-dom`
-  - [Lightweight tutorial by W3Schools](https://www.w3schools.com/react/react_router.asp)
-  - [How to use route parameters](https://reactrouter.com/en/main/hooks/use-params).
-    This is the `/:id` stuff you see in some routes.
-  - [More in-depth tutorial](https://blog.logrocket.com/react-router-dom-tutorial-examples/)
-  - [Deeper dive into it's implementation](https://reactrouter.com/en/main/start/concepts)
-- Making API requests
-  - [Demo of the Users Api](https://www.loom.com/share/87b05404e35e42e5b48758ea7956d9b5)
-  - [How HTTP requests and responses work](https://www.realisable.co.uk/support/documentation/iman-user-guide/DataConcepts/WebRequestAnatomy.htm)
-  - [Fetch API guide](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-  - [multipart/form-data guide](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_XMLHttpRequest_and_the_FormData_object)
-  - An [example](https://github.com/DISC-NU/workshop-5-frontend/blob/main/src/pages/ProductForm.tsx) 
-  of making multipart/form-data requests using the `FormData` object. 
-    - This example uses the products API from workshop 5, so your code will look a little 
-    different. But for the most part, it should look very similar.
+- Performance
+  - [useRef deep dive](https://dev.to/samabaasi/mastering-reacts-useref-hook-a-deep-dive-1548)
+  - [more useRef examples](https://medium.com/zestgeek/understanding-the-useref-hook-in-react-real-life-examples-98339ab7f768)
+  - [useMemo, useCallback, and React.memo](https://www.joshwcomeau.com/react/usememo-and-usecallback/)
+  - [how useMemo is implemented](https://stackoverflow.com/questions/57441420/how-to-implement-your-own-usememo-from-scratch-for-react)
+  - [What must be included in a dependency array?](https://react.dev/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive)
+  - [Pure components](https://react.dev/learn/keeping-components-pure)
+  - An excellent [deep dive into React.memo](https://stackoverflow.com/questions/74013864/why-arent-all-react-components-wrapped-with-react-memo-by-default)
+- Readability & maintainability
+  - [short useContext guide](https://medium.com/@msgold/using-usecontext-in-react-a-comprehensive-guide-8a9f5271f7a8)
+  - a longer, but probably easier to follow [useContext guide](https://refine.dev/blog/usecontext-and-react-context/#what-is-react-context-api)
+  - [guide for custom hooks](https://react.dev/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component)
+  - [rules of hooks](https://react.dev/reference/rules/rules-of-hooks)
+  - wonderful [deep dive into hooks](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889)
 - Google
 - StackOverflow
 - Quora
-- ChatGPT
+- AI, but don't mindlessly copy-paste. It will be very obvious if you do so, and you
+won't learn anything.
 
 ## Submission
 
 1. Make sure all your changes are committed and pushed onto github
-   (the hw-4 branch, NOT the main branch or `hw-4` branch).
-2. On github, make a pull request from your `hw-5` branch.
-   **Do NOT merge the pull request**.
+   (the `hw-6` branch, NOT the main branch or any branches for previous assignments).
+2. On github, make a pull request from your `hw-6` branch.
+    - **Do NOT merge the pull request**
 3. Once you've created the pull request, copy its URL from the browser.
-4. Fill out [this google form](https://forms.gle/EiiqQGoRG994SKHN9)
+4. Fill out [this google form](https://forms.gle/d2gjt5HFtBjZEUGb9)
 
 
