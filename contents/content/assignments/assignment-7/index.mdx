@@ -1,0 +1,92 @@
+---
+title: Assignment 7 - Building a PostgreSQL-Integrated API
+---
+
+In this assignment, you’ll be creating a user database in PostgreSQL, developing a basic API with Node and Express to interact with this database, and integrating it with a frontend application. The focus will be on implementing and connecting a RESTful API to manage user data effectively.
+
+## Requirements
+
+### 1. Database Setup
+
+- **Database Creation**  
+  Start by setting up a PostgreSQL database with one table named `users`.
+
+  - **Table Schema**:
+
+    - `id`: Primary key, unique identifier for each user (e.g., `SERIAL` or `UUID`).
+    - `first_name`: String, stores the first name of the user.
+    - `last_name`: String, stores the last name of the user.
+    - `email`: String, stores the user’s email address (make this unique if possible).
+    - Any additional fields of your choice (e.g., `created_at`, `is_active`, etc.).
+
+  - **Connection & Environment Variables**
+    - Store database credentials (host, port, database name, user, password) in an `.env` file to keep them secure.
+    - Remember not to push the `.env` file to GitHub to protect your sensitive information.
+
+### 2. API Development
+
+- **Repository**  
+  Create a new GitHub repository specifically for your backend code. Use clear, consistent commit messages to document your progress.
+
+- **API Endpoints**  
+  Develop a set of API endpoints to interact with the `users` table. Use Node and Express to set up these endpoints.
+
+  - **GET `/users`**: Retrieve all users from the database.
+    - Return the full list of users in JSON format.
+    - Ensure this endpoint is connected to the `users` table and successfully retrieves data.
+
+- **Connecting to Frontend**  
+  Integrate this API with a frontend application using a `localhost` endpoint. You can use the example code on the GitHub organization as a reference for how to make API requests from the frontend.
+
+  - **Environment Configuration**:
+    - Use an `.env` file to store sensitive information (e.g., `DB_PASSWORD`, `API_KEY`).
+    - Double-check that `.env` is included in your `.gitignore` to prevent pushing it to GitHub.
+
+### 3. Extra Credit (Optional)
+
+- **Additional API Endpoints**  
+  Enhance your API by adding more functionality:
+
+  - **POST `/users`**: Create a new user and add them to the database.
+  - **DELETE `/users/:id`**: Delete a user by ID.
+  - **PUT `/users/:id`**: Update a user’s information by ID.
+
+  - Connect these endpoints to the frontend to allow full CRUD operations (Create, Read, Update, Delete).
+
+- **Enhanced Database Schema**  
+  Add additional columns to the `users` table that might be relevant (e.g., `date_of_birth`, `profile_picture_url`, etc.) to further enrich the user data.
+
+### Submission Instructions
+
+1. **Database Schema and Query Results**
+
+   - Run `SHOW TABLES` (or the equivalent command) to display the schema of the `users` table. Take a screenshot or copy the output.
+   - Run `SELECT * FROM users;` and save the output to provide a sample of the data in your table.
+
+2. **GitHub Repository Links**
+
+   - API: Provide a link to the GitHub repository that contains your API code.
+   - Frontend: Provide a link to your frontend repository and specify the line of code where the API connection is implemented.
+
+3. **Submission Form**
+   - Copy the URLs of your GitHub repositories and upload the schema and query results to [this Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfntsALyE7yn-3-b7k-Ltg7PW-JZpIadk27kPNuuRqt0ScLaA/viewform).
+
+## Deliverables
+
+- **Database Schema Output**:
+
+  ```sql
+  SHOW TABLES;
+  ```
+
+- **Database Query Output**:
+
+  ```sql
+  SELECT * FROM users;
+  ```
+
+- **GitHub Repository Links**:
+  - Backend API: [GitHub Link to Backend Repository](#)
+  - Frontend Code (with line reference): [GitHub Link to Frontend Repository](#)
+
+Good luck, and remember to carefully structure your code and keep your environment variables secure!
