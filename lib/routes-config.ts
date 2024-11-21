@@ -43,6 +43,7 @@ export const ROUTES: EachRoute[] = [
       { title: "Assignment 5", href: "/assignment-5" },
       { title: "Assignment 6", href: "/assignment-6" },
       { title: "Assignment 7", href: "/assignment-7" },
+      { title: "Assignment 8", href: "/assignment-8" },
     ],
   },
 ];
