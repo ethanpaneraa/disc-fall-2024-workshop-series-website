@@ -28,6 +28,7 @@ export const ROUTES: EachRoute[] = [
       { title: "Workshop 6", href: "/workshop-6" },
       { title: "Workshop 7", href: "/workshop-7" },
       { title: "Workshop 8", href: "/workshop-8" },
+      { title: "Workshop 9", href: "/workshop-9" },
     ],
   },
   {
@@ -45,6 +46,7 @@ export const ROUTES: EachRoute[] = [
       { title: "Assignment 6", href: "/assignment-6" },
       { title: "Assignment 7", href: "/assignment-7" },
       { title: "Assignment 8", href: "/assignment-8" },
+      { title: "Assignment 9", href: "/assignment-9" },
     ],
   },
 ];
